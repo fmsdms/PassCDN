@@ -50,13 +50,22 @@ def LossG():
     plt.ylabel("生成器损失", fontproperties=Chinesefont)  # 设置y轴名称
     plt.show()
 
-def train_score():
+def validating_score():
     plt.figure(figsize=[7.5, 5])
     plt.plot(iters,validatingScore)
     plt.xticks(fontproperties=Chinesefont)
     plt.yticks(fontproperties=Chinesefont)
     plt.xlabel("训练迭代轮数", fontproperties=Chinesefont)  # 设置x轴名称
     plt.ylabel("验证集一个批处理单位口令平均得分", fontproperties=Chinesefont)  # 设置y轴名称
+    plt.show()
+
+def training_score():
+    plt.figure(figsize=[7.5, 5])
+    plt.plot(iters,ispass)
+    plt.xticks(fontproperties=Chinesefont)
+    plt.yticks(fontproperties=Chinesefont)
+    plt.xlabel("训练迭代轮数", fontproperties=Chinesefont)  # 设置x轴名称
+    plt.ylabel("训练集一个批处理单位口令平均得分", fontproperties=Chinesefont)  # 设置y轴名称
     plt.show()
 
 def G_score():
@@ -77,4 +86,4 @@ def diffs():
     plt.ylabel("生成器生成两批口令间差异", fontproperties=Chinesefont)  # 设置y轴名称
     plt.show()
 
-diffs()
+validating_score()
