@@ -39,7 +39,7 @@ disriminator_max_seq_len = 21
 embed_dim = 16
 
 # public parameters
-batch = 128
+batch = 256
 lstm_hidden = len(chars_table)
 lstm_stack_layer = 3
 Initial_learning_rate = 1e-4
@@ -99,12 +99,13 @@ for param in discriminator.parameters():
 
 # deal with file
 
-password_file = r'C:\Users\long\Desktop\data_longlong\rockyou-train.txt'
-dataset_name=password_file.split('\\')[-1].split('.')[0]
+#password_file = r'C:\Users\long\Desktop\data_longlong\rockyou-train.txt'
+password_file='./high-freq-all.txt'
+dataset_name=password_file.split('\\')[-1].split('.')[-1]
 # password_test_file=r'C:\Users\long\Desktop\data_longlong\rockyou-test.txt'
 raw_passwords = []
-training_set_rate = 0.6
-validating_set_rate = 0.4
+training_set_rate = 0.9
+validating_set_rate = 0.1
 
 sys.stdout=open(f'{dataset_name}_CDN.log','w')
 sys.stderr=sys.stdout
@@ -178,11 +179,11 @@ indices10 = torch.unsqueeze(indices10, 0)
 indices10 = torch.cat([indices10] * batch)
 indices = [0, 0, 0, 0, 0, indices5, indices6, indices7, indices8, indices9, indices10]
 
-C0=0.1
-C1=0.9
-C2=0.9
+C0=0.4
+C1=0.6
+C2=0.6
 A=1.1
-everyIter=2000
+everyIter=3000
 
 def idxToOneHot(tensor):
     newT = torch.zeros(tensor.shape[0], tensor.shape[1], chars_table_len)
